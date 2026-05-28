@@ -119,7 +119,6 @@ static void inference_task(void *pvParameters) {
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
         ei_printf("    anomaly score: %.3f\n", result.anomaly);
 #endif
-        vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 

@@ -14,7 +14,8 @@ pico_enable_stdio_uart(pico_emb 1)
 # Generate PIO headers
 include(${CMAKE_CURRENT_SOURCE_DIR}/../${EI_SDK_FOLDER}/cmake/utils.cmake)
 pico_generate_pio_header(pico_emb ${CMAKE_CURRENT_SOURCE_DIR}/../${DRIVERS}/PDM/src/pdm.pio)
-
+# pio do led 360 oficial pico examples ws2813
+pico_generate_pio_header(pico_emb ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio)
 # Link libraries
 target_link_libraries(pico_emb
                       pico_async_context_freertos
@@ -27,7 +28,8 @@ target_link_libraries(pico_emb
                       hardware_irq
                       hardware_flash
                       hardware_pio
-                      hardware_dma)
+                      hardware_dma
+                      hardware_pwm)
 
 if(PICO_CYW43_SUPPORTED)
     target_link_libraries(pico_emb pico_cyw43_arch_none)
